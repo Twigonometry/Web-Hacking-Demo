@@ -62,20 +62,20 @@ class SecretRecipe
 }
 
 //show contents of recipe file
-if ($_GET['recipe']){
+if (isset($_GET['recipe'])) {
     if (is_file("recipes/" . $_GET["recipe"]) && file_exists("recipes/" . $_GET["recipe"])) {
         show_source("recipes/" . $_GET["recipe"]); 
     } else {
         echo('<p>Recipe not found. Try again!</p>');
     }
-} elseif ($_GET['id']){
+} elseif (isset($_GET['id'])) {
     //getting recipe from DB by ID
 
     $recipe = new SecretRecipe($_GET['id']);
 
     $recipe->get_from_db();
     
-} elseif ($_GET['string_id']){
+} elseif (isset($_GET['string_id'])) {
     //getting recipe string from DB by ID, constructing recipe
 
     error_log("Getting recipe string by ID");

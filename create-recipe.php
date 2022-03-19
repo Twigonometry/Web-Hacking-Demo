@@ -35,4 +35,7 @@ if(isset($_GET["recipe_recipe"])) {
 
         echo("Thanks for submitting! Your ID: ". $id);
     }
+} else {
+    //no params given
+    echo('Please provide a recipe recipe.');
 }
