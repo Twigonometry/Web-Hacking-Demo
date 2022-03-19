@@ -1,7 +1,20 @@
-DROP DATABASE if exists recipes;
-CREATE DATABASE recipes;
+DROP DATABASE if exists challenge;
+CREATE DATABASE challenge;
 
-use recipes;
+use challenge;
+
+CREATE TABLE users (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO users (id, username, password) VALUES (1, "sesh_admin", "$2y$10$oZp58XFkL4Y4sEPVVIcoqO3DqSAaCRczOdoMLZ4nIPkLtEu88uCna");
+
+CREATE TABLE reviews (review_id int NOT NULL AUTO_INCREMENT, review_text varchar(1000), PRIMARY KEY (review_id));
+
+INSERT INTO reviews (review_text) VALUES ("Your recipes are incredible!");
 
 CREATE TABLE recipes (recipe_id int NOT NULL AUTO_INCREMENT, recipe_title varchar(100), recipe_text varchar(1000), PRIMARY KEY (recipe_id));
 
