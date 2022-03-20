@@ -7,7 +7,7 @@
 
   <p>View any page on the internet, rendered safely in an iframe!</p>
   
-  <form method="get" action="/image-viewer.php">
+  <form method="get" action="/page-viewer.php">
       <input type="text" name="url" id="url"></input>
       <button type="submit">Submit</button>
   </form>

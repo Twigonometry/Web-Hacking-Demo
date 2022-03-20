@@ -23,7 +23,10 @@ sudo yum install git
 git clone git@github.com:Twigonometry/Web-Hacking-Demo.git
 cd Web-Hacking-Demo/
 docker build -t web-hacking-demo .
+docker run -dp 80:80 web-hacking-demo
 ```
+
+To get a shell: `docker ps` for container id, then `docker exec -it [ID] /bin/sh`
 
 ### Manually
 
