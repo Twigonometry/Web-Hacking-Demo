@@ -5,7 +5,7 @@
 <div class='get-recipe'>
 <?php
 
-include 'database.php';
+include 'config.php';
 
 class SecretRecipe
 {
@@ -20,9 +20,9 @@ class SecretRecipe
     }
 
     public function get_from_db() {
-        Database::initialize();
+        include 'config.php';
 
-        $stmt = Database::$conn->prepare("SELECT recipe_title, recipe_text FROM recipes WHERE recipe_id = ?");
+        $stmt = $link->prepare("SELECT recipe_title, recipe_text FROM recipes WHERE recipe_id = ?");
 
         // execute statement with ID variable
 
@@ -35,6 +35,7 @@ class SecretRecipe
         // output results to page
 
         while ($stmt->fetch()) {
+            error_log($this);
             if ($this->encrypted) {
                 echo("<h3>Title</h3>");
                 echo("<p>" . $recipe_title . "</p>");
@@ -62,20 +63,21 @@ class SecretRecipe
 }
 
 //show contents of recipe file
-if (isset($_GET['recipe'])) {
+if (isset($_GET['recipe']) and $_GET['recipe'] != "") {
     if (is_file("recipes/" . $_GET["recipe"]) && file_exists("recipes/" . $_GET["recipe"])) {
         show_source("recipes/" . $_GET["recipe"]); 
     } else {
         echo('<p>Recipe not found. Try again!</p>');
     }
-} elseif (isset($_GET['id'])) {
+} elseif (isset($_GET['id']) and $_GET['id'] != "") {
+    error_log("Get");
     //getting recipe from DB by ID
 
     $recipe = new SecretRecipe($_GET['id']);
 
     $recipe->get_from_db();
     
-} elseif (isset($_GET['string_id'])) {
+} elseif (isset($_GET['string_id']) and $_GET['string_id'] != "") {
     //getting recipe string from DB by ID, constructing recipe
 
     error_log("Getting recipe string by ID");
@@ -84,10 +86,7 @@ if (isset($_GET['recipe'])) {
 
     $id = intval($_GET['string_id']);
 
-    //get recipe string from DB based on ID
-    Database::initialize();
-
-    $stmt = Database::$conn->prepare("SELECT recipe_recipe FROM recipe_strings WHERE id = ?");
+    $stmt = $link->prepare("SELECT recipe_recipe FROM recipe_strings WHERE id = ?");
 
     // execute statement with ID variable
 

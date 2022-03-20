@@ -29,7 +29,7 @@ if (isset($_POST["review_text"])) {
     // get ID of last item
     $id = $link->insert_id;
 
-    echo("Thanks for submitting! Your ID: ". $id);
+    echo("Thanks for submitting!");
 } else {
     //no params given
     echo('Please provide a review text.');

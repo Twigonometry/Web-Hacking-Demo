@@ -5,7 +5,7 @@
 <div class='get-recipe'>
 <?php
 
-include 'database.php';
+require_once 'config.php';
 
 if(isset($_GET["recipe_recipe"])) {
     //let people submit their own recipes to see how they're displayed on page
@@ -17,9 +17,7 @@ if(isset($_GET["recipe_recipe"])) {
         //insert into recipe_strings database
         error_log("Inserting");
 
-        Database::initialize();
-
-        $stmt = Database::$conn->prepare("INSERT INTO recipe_strings (recipe_recipe) VALUES (?)");
+        $stmt = $link->prepare("INSERT INTO recipe_strings (recipe_recipe) VALUES (?)");
 
         // execute statement with submitted string
 
@@ -31,7 +29,7 @@ if(isset($_GET["recipe_recipe"])) {
         $stmt->close();
 
         // get ID of last item
-        $id = Database::$conn->insert_id;
+        $id = $link->insert_id;
 
         echo("Thanks for submitting! Your ID: ". $id);
     }
@@ -39,3 +37,7 @@ if(isset($_GET["recipe_recipe"])) {
     //no params given
     echo('Please provide a recipe recipe.');
 }
+
+?>
+
+</div>
