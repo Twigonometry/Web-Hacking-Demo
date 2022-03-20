@@ -1,4 +1,4 @@
-FROM FROM ubuntu:20.04
+FROM ubuntu:20.04
 RUN apt-get update&& \
  apt-get -y install mysql-server php-mysql
 RUN systemctl start mysql.service
