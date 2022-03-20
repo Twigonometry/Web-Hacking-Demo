@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel='stylesheet' href='styles.css'>
+<div class='content'>
+  <h1>Web Hacking Sandbox</h1>
+
+  <h2>Reviews</h2>
+
+  <p>Try to steal an admin's cookie and access <a href="/admin.php">the admin page!</a></p>
+
+  <h3>Post a Review</h3>
+
+  <form method="post" action="create-review.php">
+    <textarea id="text" name="review_text"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <h3>View Reviews</h3>
+
+  <a href="/easy-reviews.php">Output reviews with no sanitisation</a>
+  <br>
+  <a href="/fixed-reviews.php">This example is fixed using proper sanitisation</a>
+</div>

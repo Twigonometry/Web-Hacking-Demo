@@ -1,11 +1,4 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel='stylesheet' href='styles.css'>
 <div class='content'>
-  <h1>Web Hacking Sandbox</h1>
-
-  <h2>Comments</h2>
-
-  <p>Try to steal an admin's cookie and access <a href="/admin.php">the admin page!</a></p>
-
-  <a href="/fixed-comments.php">This example is fixed using proper sanitisation</a>
 </div>
