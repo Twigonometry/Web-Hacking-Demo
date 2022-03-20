@@ -6,17 +6,16 @@
   <form method="get" action="/recipe-hash.php">
     <textarea id="text" name="hash_input"></textarea>
     <br>
-    <input type="radio" id="md5" name="hash" value="md5">
+    <input type="radio" id="md5" name="hash" value="hash_functions/md5.php">
     <label for="md5">MD5</label><br>
-    <input type="radio" id="sha1" name="hash" value="sha1">
+    <input type="radio" id="sha1" name="hash" value="hash_functions/sha1.php">
     <label for="sha1">SHA1</label><br>
     <button type="submit">Submit</button>
   </form>
 
   <?php
     if (isset($_GET['hash_input']) and isset($_GET['hash'])) {
-        $hash_file = "hash_functions/" . $_GET['hash'] . ".php";
-        include $hash_file;
+        include $_GET['hash'];
 
         if (function_exists("hash_wrapper")) {
             echo "<br>";
