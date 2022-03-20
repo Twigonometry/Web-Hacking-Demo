@@ -72,3 +72,21 @@ To read the config file:
 `http://[URL]/recipe-hash.php?hash_input=hello&hash=php://filter/convert.base64-encode/resource=config.php`
 
 </details>
+
+## Exploit Server-Side Request Forgery (SSRF)
+
+Try to use `/page-viewer.php` to view the `/local-only.php` page.
+
+<details>
+
+<summary>Spoilers</summary>
+
+There is an SSRF on `/page-viewer.php` which has a badly implemented filter.
+
+The `recipe-hash.php` file has an `include` statement that includes the contents of the `?hash=` parameter.
+
+To read the config file:
+
+`http://[URL]/recipe-hash.php?hash_input=hello&hash=php://filter/convert.base64-encode/resource=config.php`
+
+</details>

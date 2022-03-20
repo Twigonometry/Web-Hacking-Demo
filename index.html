@@ -6,11 +6,16 @@
   <h2>Activities</h2>
 
   <a href="/reviews.html">Reviews (XSS)</a>
+  <p>Try to steal an admin cookie and access <a href="/admin.php">the admin page</a>.</p>
   <br>
   <a href="/recipes.php">Recipes (Deserialisation + Directory Traversal)</a>
+  <p>Try to perform a deserialisation attack to read a secret recipe. You will need to use Directory Traversal to examine the source code.</p>
+  <br>
   <br>
   <a href="/recipe-hash.php">Recipe Hashing (File Inclusion)</a>
+  <p>Try to find a file inclusion vulnerability in this page. It may help to look at the source code using the Git repo (or using a vulnerability from another challenge...)</p>
   <br>
-  <a href="/image-viewer.php">Image Viewer (SSRF)</a>
-  <p>Can you use the image viewer to see the contents of the <a href="/local-only.php">local-only page</a>?</p>
+  <br>
+  <a href="/page-viewer.php">Page Viewer (SSRF)</a>
+  <p>Can you use the webpage viewer to see the contents of the <a href="/local-only.php">local-only page</a>?</p>
 </div>
