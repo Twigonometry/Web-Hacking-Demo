@@ -1,5 +1,5 @@
 FROM php:7.4-apache
-COPY docker-files/ /var/www/html
+COPY docker_files/ /var/www/html
 WORKDIR /var/www/html
 
 RUN sudo apt install mysql-server php-mysql

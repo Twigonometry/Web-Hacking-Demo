@@ -3,11 +3,41 @@ A web application hacking sandbox challenge for [Sheffield Ethical Student Hacke
 
 ## Setup
 
+### With Docker
+
+On EC2:
+
+```
+sudo yum update -y
+sudo amazon-linux-extras install docker
+sudo yum install docker
+sudo service docker start
+sudo systemctl enable docker
+sudo usermod -a -G docker ec2-user
+```
+
+Restart session, then run:
+
+```
+sudo yum install git
+git clone git@github.com:Twigonometry/Web-Hacking-Demo.git
+cd Web-Hacking-Demo/
+docker build -t web-hacking-demo .
+```
+
+### Manually
+
 Install mysql: `sudo apt install mysql-server php-mysql`
 
 Start service: `sudo systemctl start mysql.service`
 
-Configure: `sudo mysql; CREATE USER 'sesh'@'localhost' IDENTIFIED BY 'SESHPassword123!';`
+Configure:
+- `sudo mysql
+- `CREATE USER 'sesh'@'localhost' IDENTIFIED BY 'SESHPassword123!';`
+- `CREATE DATABASE challenge;`
+- `GRANT ALL PRIVILEGES ON challenge.* TO 'sesh'@'localhost' WITH GRANT OPTION;`
+- `FLUSH PRIVILEGES;`
+- `exit`
 
 Seed: `mysql -u sesh -p < seed.sql`
 
