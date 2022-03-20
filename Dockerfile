@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 RUN apt-get update&& \
- apt-get -y install mysql-server php-mysql
+ DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server php-mysql
 RUN systemctl start mysql.service
 
 FROM php:7.4-apache
