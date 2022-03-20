@@ -19,6 +19,8 @@ Seed: `mysql -u sesh -p < seed.sql`
 
 The `/reviews` page allows posting reviews. Click one of the sublinks to render the reviews using different levels of user input sanitisation, and see if you can steal an admin cookie.
 
+NOTE: you will need to login as an admin and visit the reviews page in a new browser session (try an incognito tab) and refresh the page after you submit your XSS payload for this to work.
+
 <details>
 
 <summary>Spoilers</summary>
