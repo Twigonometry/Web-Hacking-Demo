@@ -11,6 +11,8 @@ Configure: `sudo mysql; CREATE USER 'sesh'@'localhost' IDENTIFIED BY 'SESHPasswo
 
 Seed: `mysql -u sesh -p < seed.sql`
 
+Launch: `php -S localhost:8000`
+
 ## Login
 
 `sesh_admin`:`mylongpassword123?`
