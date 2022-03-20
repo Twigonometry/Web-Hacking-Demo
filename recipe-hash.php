@@ -18,9 +18,11 @@
         $hash_file = "hash_functions/" . $_GET['hash'] . ".php";
         include $hash_file;
 
-        echo "<br>";
-        hash_wrapper($_GET['hash_input']);
-        echo "<br>";
+        if (function_exists("hash_wrapper")) {
+            echo "<br>";
+            hash_wrapper($_GET['hash_input']);
+            echo "<br>";
+        }
     }
   ?>
 </div>
