@@ -83,10 +83,8 @@ Try to use `/page-viewer.php` to view the `/local-only.php` page.
 
 There is an SSRF on `/page-viewer.php` which has a badly implemented filter.
 
-The `recipe-hash.php` file has an `include` statement that includes the contents of the `?hash=` parameter.
+The phrases `127.0.0.1` and `localhost` are blocked, but an alternative can be used such as `127.1`:
 
-To read the config file:
-
-`http://[URL]/recipe-hash.php?hash_input=hello&hash=php://filter/convert.base64-encode/resource=config.php`
+`http://127.1:8000/local-only.php`
 
 </details>
