@@ -2,17 +2,17 @@ FROM php:7.4-apache
 COPY docker_files/ /var/www/html
 WORKDIR /var/www/html
 
-RUN sudo apt install mysql-server php-mysql
-RUN sudo systemctl start mysql.service
+RUN apt install mysql-server php-mysql
+RUN systemctl start mysql.service
 
-RUN sudo mysql -e "CREATE USER 'sesh'@'localhost' IDENTIFIED BY 'SESHPassword123!'"
-RUN sudo mysql -e "CREATE DATABASE challenge"
-RUN sudo mysql -e "GRANT ALL PRIVILEGES ON challenge.* TO 'sesh'@'localhost' WITH GRANT OPTION"
-RUN sudo mysql -e "FLUSH PRIVILEGES"
-RUN sudo mysql < seed.sql
+RUN mysql -e "CREATE USER 'sesh'@'localhost' IDENTIFIED BY 'SESHPassword123!'"
+RUN mysql -e "CREATE DATABASE challenge"
+RUN mysql -e "GRANT ALL PRIVILEGES ON challenge.* TO 'sesh'@'localhost' WITH GRANT OPTION"
+RUN mysql -e "FLUSH PRIVILEGES"
+RUN mysql < seed.sql
 
-RUN sudo htpasswd -c /etc/apache2/.htpasswd sesh SESHWebHackingPassword123?
+RUN htpasswd -c /etc/apache2/.htpasswd sesh SESHWebHackingPassword123?
 
 COPY apache2.conf /etc/apache2/apache2.conf
 
-RUN sudo service apache2 restart
+RUN service apache2 restart
