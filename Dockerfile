@@ -1,6 +1,4 @@
-FROM ubuntu:20.04
-RUN apt-get update&& \
- DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server php-mysql
+FROM mysql:8.0.28
 
 COPY seed.sql .
 
