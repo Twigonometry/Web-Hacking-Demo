@@ -3,7 +3,66 @@ A web application hacking sandbox challenge for [Sheffield Ethical Student Hacke
 
 ## Setup
 
+### Manually
+
+This works on an Ubuntu 20.04 EC2 image.
+
+Install mysql:
+
+```
+sudo apt-get update
+sudo apt install -y mysql-server php-mysql php7.4 apache2
+```
+
+Start service:
+```sudo systemctl start mysql.service
+```
+
+Configure:
+```
+sudo mysql
+> CREATE USER 'sesh'@'localhost' IDENTIFIED BY 'SESHPassword123!';
+> CREATE DATABASE challenge;
+> GRANT ALL PRIVILEGES ON challenge.* TO 'sesh'@'localhost' WITH GRANT OPTION;
+> FLUSH PRIVILEGES;
+> exit
+```
+
+Clone repository:
+
+```
+git clone https://github.com/Twigonometry/Web-Hacking-Demo.git
+```
+
+Seed:
+
+```
+mysql -u sesh -p < seed.sql
+```
+
+Copy files to apache directory:
+
+```
+cd Web-Hacking-Demo/
+sudo cp -r * /var/www/html
+```
+
+Add password:
+
+```
+sudo htpasswd -b -c /etc/apache2/.htpasswd sesh SESHWebHackingPassword123
+sudo cp apache2.conf /etc/apache2/apache2.conf
+```
+
+Restart apache:
+
+```
+sudo service apache2 restart
+```
+
 ### With Docker
+
+**NOTE**: The Dockerfile does not work, as the `mysqli_connect()` function does not run. This is a work in progress.
 
 On EC2:
 
@@ -28,25 +87,9 @@ docker run -dp 80:80 web-hacking-demo
 
 To get a shell: `docker ps` for container id, then `docker exec -it [ID] /bin/sh`
 
-### Manually
-
-Install mysql: `sudo apt install mysql-server php-mysql`
-
-Start service: `sudo systemctl start mysql.service`
-
-Configure:
-- `sudo mysql
-- `CREATE USER 'sesh'@'localhost' IDENTIFIED BY 'SESHPassword123!';`
-- `CREATE DATABASE challenge;`
-- `GRANT ALL PRIVILEGES ON challenge.* TO 'sesh'@'localhost' WITH GRANT OPTION;`
-- `FLUSH PRIVILEGES;`
-- `exit`
-
-Seed: `mysql -u sesh -p < seed.sql`
-
-Launch: `php -S localhost:8000`
-
 ## Login
+
+Login to admin page:
 
 `sesh_admin`:`mylongpassword123?`
 
