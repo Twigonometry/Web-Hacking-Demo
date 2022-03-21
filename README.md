@@ -15,7 +15,8 @@ sudo apt install -y mysql-server php-mysql php7.4 apache2
 ```
 
 Start service:
-```sudo systemctl start mysql.service
+```
+sudo systemctl start mysql.service
 ```
 
 Configure:
